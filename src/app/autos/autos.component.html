@@ -1,0 +1,44 @@
+<br><br>
+<button  [routerLink]="['/create']" type="button" class="btn btn-secondary"> Agregar </button>
+<br><br>
+<h1>{{titulo}}</h1>
+
+<table class="table table-striped">
+  <thead>
+      <tr>
+          <th style="width: 10%">
+              Marca
+          </th>
+          <th style="width: 30%">
+              Modelo
+          </th>
+          <th style="width: 10%">
+              Año
+          </th>
+          <th style="width: 30%">
+              Versión
+          </th>
+          <th style="width: 20%">
+              Acción
+          </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let auto of autos">
+          <td>{{auto.marca}}</td>
+          <td>{{auto.modelo}}</td>
+          <td class="text-right">{{auto.anio}}</td>
+          <td>{{auto.version | uppercase}}</td>
+          <td>
+            <!--button [routerLink]= "['/autos',auto._id,'detail']" type="button" class="btn btn-info">
+                Ver</button-->
+            <button (click)="view(auto)" type="button" 
+                class="btn btn-info">Ver</button>                
+            <button type="button" 
+                    class="btn btn-primary">Editar</button>
+            <button type="button" 
+                    class="btn btn-danger">Eliminar</button>
+          </td>
+      </tr>
+  </tbody>
+</table>

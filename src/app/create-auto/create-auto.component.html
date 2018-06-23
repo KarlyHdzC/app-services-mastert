@@ -1,0 +1,66 @@
+<h1>
+    {{autoTitle.marca}}
+    {{autoTitle.modelo}}
+    {{autoTitle.anio}}
+    {{autoTitle.version}}
+  </h1>
+  
+  <form [formGroup]="formAuto" novalidate>
+      <div class="form-group">
+          <label class="center-block">Marca:
+              <input class="form-control" 
+                  [(ngModel)]="autoTitle.marca"
+                  formControlName="marca">
+              <small [hidden]="formAuto.controls.marca.valid ||
+                  (formAuto.controls.marca.pristine && !submitted)" 
+                  class="text-danger">
+                  La marca es requerida (máximo 15 letras).
+              </small>
+          </label>
+      </div>
+      <div class="form-group">
+          <label class="center-block">Modelo:
+                  <input class="form-control" 
+                      [(ngModel)]="autoTitle.modelo"
+                      formControlName="modelo">
+                  <small [hidden]="formAuto.controls.modelo.valid || 
+                      (formAuto.controls.modelo.pristine && !submitted)" 
+                      class="text-danger">
+                      El modelo es requerido (máximo 10 letras).
+                  </small>
+          </label>
+      </div>
+      <div class="form-group">
+          <label class="center-block">Año:
+                  <input class="form-control" 
+                      [(ngModel)]="autoTitle.anio"
+                      formControlName="anio">
+                  <small [hidden]="formAuto.controls.anio.valid || 
+                      (formAuto.controls.anio.pristine && !submitted)" 
+                      class="text-danger">
+                      El año es requerido (Solo se aceptan números).
+                  </small>
+          </label>
+      </div>
+      <div class="form-group">
+          <label class="center-block">Version:
+                  <input class="form-control" 
+                      [(ngModel)]="autoTitle.version"
+                      formControlName="version">
+                  <small [hidden]="formAuto.controls.version.valid || 
+                      (formAuto.controls.version.pristine && !submitted)" 
+                      class="text-danger">
+                      La version es requerida (máximo 10 letras).
+                  </small>
+          </label>
+      </div>
+  
+      <button 
+          type="submit" 
+          class="btn btn-success" 
+          [disabled]="!formAuto.valid"
+          (click)="onSubmit()">
+          Guardar
+      </button>
+      <button class="btn" (click)="reset()">Reset</button>
+  </form>
